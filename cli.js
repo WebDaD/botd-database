@@ -115,7 +115,7 @@ function createCalendar (year, blessings, callback) {
       var yearJSON = {}
       var start = moment(year + '-01-01')
       var stop = moment(year + '-12-31')
-      let k
+      let k = 0
       for (var m = moment(start); m.diff(stop, 'days') <= 0; m.add(1, 'days')) {
         yearJSON[m.format('YYYYMMDD')] = obj[k]
         k++
@@ -128,12 +128,15 @@ function createCalendar (year, blessings, callback) {
     }
   })
 }
-function arrayRemix (obj) {
-  for (let i = obj.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1))
-    [obj[i], obj[j]] = [obj[j], obj[i]]
-  }
-  return obj
+function arrayRemix (a) {
+  var j, x, i;
+    for (i = a.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i + 1));
+        x = a[i];
+        a[i] = a[j];
+        a[j] = x;
+    }
+  return a
 }
 function isInArray (array, blessing) {
   for (let index = 0; index < array.length; index++) {

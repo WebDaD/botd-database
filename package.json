@@ -21,8 +21,8 @@
     "json"
   ],
   "dependencies": {
-    "commander":"*",
-    "moment":"*",
-    "jsonfile":"*"
+    "commander": "*",
+    "moment": "*",
+    "jsonfile": "*"
   }
 }
