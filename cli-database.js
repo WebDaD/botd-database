@@ -1,14 +1,17 @@
 const program = require('commander')
 const moment = require('moment')
 const jsonfile = require('jsonfile')
+const jsonxml = require('jsontoxml')
 const fs = require('fs')
 
 program
   .version('1.0.0')
   .usage('[options]')
-  .option('-c, --csvimport [csv]', 'Import this CSV to blessings.json or export to this file')
+  .option('-c, --csv [csv]', 'Import this CSV to blessings.json or export to this file')
+  .option('-x, --xml [xml]', 'Import this XML to blessings.json or export to this file')
   .option('-b, --blessings <blessings>', 'The Blessings-File')
   .option('-i, --importmode [importmode]', 'The Mode to import: create or append or append-no-doubles.', /^(append|create|append-no-doubles)$/i)
+  .option('-e, --exportmode [exportmode]', 'The Mode to export: xml or csv.', /^(xml|csv)$/i)
   .option('-m, --mode <mode>', 'Mode of this run. Can be import, export, create', /^(import|create|export)$/i)
   .option('-y, --year [year]', 'For what year.', moment().format('YYYY'))
   .option('-d, --delimeter [delimeter]', 'Delimeter in CSV-File.', ';')
@@ -18,7 +21,7 @@ program
 
 switch (program.mode) {
   case 'import':
-    importCSV(program.csvimport, program.blessings, program.delimeter, program.newline, program.headers, program.importmode, function (error) {
+    importCSV(program.csv, program.blessings, program.delimeter, program.newline, program.headers, program.importmode, function (error) {
       if (error) {
         console.error(error)
       } else {
@@ -27,13 +30,30 @@ switch (program.mode) {
     })
     break
   case 'export':
-    exportCSV(program.csvimport, program.blessings, program.delimeter, program.newline, program.headers, function (error) {
-      if (error) {
-        console.error(error)
-      } else {
-        console.log('Export Succesful!')
-      }
-    })
+    switch (program.exportmode) {
+      case 'csv':
+        exportCSV(program.csv, program.blessings, program.delimeter, program.newline, program.headers, function (error) {
+          if (error) {
+            console.error(error)
+          } else {
+            console.log('Export Succesful!')
+          }
+        })
+        break
+      case 'xml':
+        exportXML(program.xml, program.blessings, function (error) {
+          if (error) {
+            console.error(error)
+          } else {
+            console.log('Export Succesful!')
+          }
+        })
+        break
+      default:
+        console.error('Unsupported Mode: ' + program.exportmode)
+        break
+    }
+
     break
   case 'create':
     createCalendar(program.year, program.blessings, function (error) {
@@ -106,6 +126,26 @@ function exportCSV (csv, blessings, delimeter, newline, headers, callback) {
     }
   })
 }
+function exportXML (xml, blessings, callback) {
+  jsonfile.readFile(blessings, function (err, obj) {
+    if (err) {
+      callback(err)
+    } else {
+      var exportString = '<?xml version="1.0" encoding="UTF-8"?><blessings>'
+      console.log(obj)
+      for (let index = 0; index < obj.length; index++) {
+        const element = obj[index]
+        exportString += '<blessing>'
+        exportString += '<blessing>' + element.blessing + '</blessing>'
+        exportString += '<source>' + element.source + '</source>'
+        exportString += '<language>' + element.language + '</language>'
+        exportString += '</blessing>'
+      }
+      exportString += '</blessings>'
+      fs.writeFile(xml, exportString, 'utf8', callback)
+    }
+  })
+}
 function createCalendar (year, blessings, callback) {
   jsonfile.readFile(blessings, function (err, obj) {
     if (err) {
@@ -129,13 +169,13 @@ function createCalendar (year, blessings, callback) {
   })
 }
 function arrayRemix (a) {
-  var j, x, i;
-    for (i = a.length - 1; i > 0; i--) {
-        j = Math.floor(Math.random() * (i + 1));
-        x = a[i];
-        a[i] = a[j];
-        a[j] = x;
-    }
+  var j, x, i
+  for (i = a.length - 1; i > 0; i--) {
+    j = Math.floor(Math.random() * (i + 1))
+    x = a[i]
+    a[i] = a[j]
+    a[j] = x
+  }
   return a
 }
 function isInArray (array, blessing) {

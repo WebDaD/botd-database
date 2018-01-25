@@ -1,0 +1,1 @@
+// COPY to dist: blessings.json/csv/xml, feed.php, htaccess)
