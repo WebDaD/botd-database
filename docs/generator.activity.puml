@@ -1,0 +1,16 @@
+@startuml
+
+title Activity Diagram \n Generate Static HTML Files
+
+start
+
+:Check Parameters (Year, Cal-File, Base-File1);
+
+if (All parms there?) then (yes)
+ :Go On;
+else (no)
+endif
+
+stop
+
+@enduml

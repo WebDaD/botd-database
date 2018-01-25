@@ -1,2 +1,2 @@
 #!/bin/bash
-node cli.js $@
+node cli-database.js $@
