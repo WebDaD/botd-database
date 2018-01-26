@@ -1,2 +1,2 @@
 #!/bin/bash
-node cli-generator.js $@
+node /mnt/c/Users/sigmu/Code/botd/cli-generator.js $@

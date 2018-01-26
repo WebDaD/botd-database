@@ -1,2 +1,2 @@
 #!/bin/bash
-node cli-database.js $@
+node /mnt/c/Users/sigmu/Code/botd/cli-database.js $@
