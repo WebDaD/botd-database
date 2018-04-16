@@ -1,2 +1,0 @@
-#!/bin/bash
-node /mnt/c/Users/sigmu/Code/botd/cli-database.js $@

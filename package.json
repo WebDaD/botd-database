@@ -1,17 +1,16 @@
 {
-  "name": "botd-database",
+  "name": "botd",
   "version": "1.0.0",
   "license": "The Unlicense",
-  "repository": "WebDaD/botd-database",
+  "repository": "WebDaD/botd",
   "author": {
     "email": "dominik.sigmund@webdad.eu",
     "name": "Dominik Sigmund",
     "url": "https://github.com/WebDaD"
   },
-  "files": [
-    "cli.js",
-    "botd-database"
-  ],
+  "bin": {
+    "botd":"cli.js"
+  },
   "keywords": [
     "botd",
     "blessing",

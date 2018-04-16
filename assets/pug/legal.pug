@@ -1,0 +1,15 @@
+doctype html
+html
+  include includes/header.pug
+  body
+    include includes/share.pug
+    .container
+      nav.navbar.navbar-default
+        .container-fluid
+          .navbar-header
+            a.navbar-brand(href='#')
+              img(alt='Brand', src='images/apple-touch-icon.png', style='width:72px;')
+              span.title Legal Notice
+      h1 Impressum
+      // - TODO: Datenschutz...
+    include includes/footer.pug

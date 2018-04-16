@@ -29,3 +29,6 @@ dist
 # https://docs.npmjs.com/misc/faq#should-i-check-my-node-modules-folder-into-git
 node_modules
 package-lock.json
+
+# Config (may include sensible Data)
+config.json
