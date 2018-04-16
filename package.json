@@ -1,7 +1,7 @@
 {
   "name": "botd",
   "version": "1.0.0",
-  "license": "The Unlicense",
+  "license": "Unlicense",
   "repository": "WebDaD/botd",
   "author": {
     "email": "dominik.sigmund@webdad.eu",
@@ -9,7 +9,7 @@
     "url": "https://github.com/WebDaD"
   },
   "bin": {
-    "botd":"cli.js"
+    "botd": "cli.js"
   },
   "keywords": [
     "botd",
@@ -21,7 +21,10 @@
   ],
   "dependencies": {
     "commander": "*",
+    "jsonfile": "*",
+    "less": "*",
+    "mkdirp": "^0.5.1",
     "moment": "*",
-    "jsonfile": "*"
+    "pug": "*"
   }
 }

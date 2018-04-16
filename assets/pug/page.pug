@@ -9,15 +9,15 @@ html
           .navbar-header
             a.navbar-brand(href='#')
               img(alt='Brand', src='images/apple-touch-icon.png', style='width:72px;')
-              span.title Segen des Tages DD.MM.JJJJ
-      h1 DD.MM.JJJJ
+              span.title Segen des Tages #{day}
+      h1 #{day}
       blockquote
-        | Der Text
-        cite Quelle
-      button.btn
+        p.blessing #{blessing}
+        cite #{source}
+      a.btn(href="/#{prev}")
         i.fa.fa-chevron-left(aria-hidden='true')
-        span DD.MM.JJJJ
-      button.btn.pull-right
-        span DD.MM.JJJJ
+        span #{niceprev}
+      a.btn.pull-right(href="/#{next}")
+        span #{nicenext}
         i.fa.fa-chevron-right(aria-hidden='true')
     include includes/footer.pug
