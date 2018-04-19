@@ -1,3 +1,14 @@
+* command line: better args (set inline eg)
+
+* fill config
+* use config in gen / db
+
+years.ics (iCAL) https://de.wikipedia.org/wiki/ICalendar
+
+* pages:
+* font awesome missing
+* better full page css
+
 * google webmaster
 * bing
 * yandex
@@ -28,5 +39,10 @@ http://wave.webaim.org/report#/feg-ffb.de
 +*   https://search.google.com/structured-data/testing-tool#url=feg-ffb.de
 
 add robots.txt
+add sitemap
+add manifest
+
+
+.htaccess (page rewrite)
 
 * facebook page / app_id

@@ -1,6 +1,7 @@
 doctype html
 html
   include includes/header.pug
+  title Segen des Tages #{day}
   body
     include includes/share.pug
     .container
@@ -12,12 +13,12 @@ html
               span.title Segen des Tages #{day}
       h1 #{day}
       blockquote
-        p.blessing #{blessing}
+        p.blessing !{text}
         cite #{source}
-      a.btn(href="/#{prev}")
+      a.btn(href="/"+prev+".html")
         i.fa.fa-chevron-left(aria-hidden='true')
         span #{niceprev}
-      a.btn.pull-right(href="/#{next}")
+      a.btn.pull-right(href="/"+next+".html")
         span #{nicenext}
         i.fa.fa-chevron-right(aria-hidden='true')
     include includes/footer.pug

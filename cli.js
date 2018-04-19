@@ -40,22 +40,12 @@ program
   .action(function (args, options) {
     switch (options.exportmode) {
       case 'csv':
-        database.exportCSV(options.csv, options.blessings, options.delimeter, options.newline, options.headers, function (error) {
-          if (error) {
-            console.error(error)
-          } else {
-            console.log('Export Succesful!')
-          }
-        })
+        database.exportCSV(options.csv, options.blessings, options.delimeter, options.newline, options.headers)
+        console.log('Export Succesful!')
         break
       case 'xml':
-        database.exportXML(options.xml, options.blessings, function (error) {
-          if (error) {
-            console.error(error)
-          } else {
-            console.log('Export Succesful!')
-          }
-        })
+        database.exportXML(options.xml, options.blessings)
+        console.log('Export Succesful!')
         break
       default:
         console.error('Unsupported Mode: ' + options.exportmode)
@@ -92,14 +82,9 @@ program
       if (error) {
         console.error(error)
       } else {
-        generator.copyStatic(options.folder, options.output, config, function (error, result) {
-          if (error) {
-            console.error(error)
-          } else {
-            generator.createPages(options.folder, options.output, options.year, config)
-            console.log('All Done, you may now ftp your stuff.')
-          }
-        })
+        generator.copyStatic(options.folder, options.output, config)
+        generator.createPages(options.folder, options.output, options.year, config)
+        console.log('All Done, you may now ftp your stuff.')
       }
     })
   })

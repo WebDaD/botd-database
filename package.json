@@ -21,7 +21,9 @@
   ],
   "dependencies": {
     "commander": "*",
+    "copy-dir": "^0.3.0",
     "jsonfile": "*",
+    "jsontoxml": "^1.0.0",
     "less": "*",
     "mkdirp": "^0.5.1",
     "moment": "*",
