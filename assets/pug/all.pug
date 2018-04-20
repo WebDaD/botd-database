@@ -1,7 +1,7 @@
 doctype html
 html
   include includes/header.pug
-  title Segen des Tages DD.MM.JJJJ
+  title Alle Segenssprüche
   body
     include includes/share.pug
     .container
@@ -10,7 +10,11 @@ html
           .navbar-header
             a.navbar-brand(href='#')
               img(alt='Brand', src='images/apple-touch-icon.png', style='width:72px;')
-              span.title All Blessings - YYYY
-      h1 All Blessings
-      // - TODO: Tabelle Alle
+              span.title Alle Segenssprüche
+      h1 Alle Segenssprüche
+      each blessing in blessings
+        blockquote
+          p.blessing !{blessing.text}
+          cite #{blessing.source}
+        hr
     include includes/footer.pug
