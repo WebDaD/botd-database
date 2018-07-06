@@ -4,6 +4,8 @@ $begin = new DateTime('2018-01-01');
 $now = new DateTime('NOW');
 $interval = DateInterval::createFromDateString('1 day');
 $period = new DatePeriod($begin, $interval, $now);
+$string = file_get_contents($now->format("Y").".json");
+$json = json_decode($string, true);
 ?>
 <rss xmlns:content="http://purl.org/rss/1.0/modules/content/"  xmlns:webfeeds="http://webfeeds.org/rss/1.0" version="2.0">
   <channel>
@@ -28,7 +30,19 @@ $period = new DatePeriod($begin, $interval, $now);
       <item>
         <title>Segen am <?php echo $dt->format("d.m.Y");?></title>
         <link>http://botd.webdad.eu/ <?php echo $dt->format("Ymd");?>.html</link>
-        <description>Der Segen für den <?php echo $dt->format("d.m.Y");?></description>
+        <description>
+          <![CDATA[ 
+            Der Segen für den <?php echo $dt->format("d.m.Y");?>: 
+            <br/>
+            <br/>
+            <?php echo nl2br($json[$dt->format("Ymd")]['text']);?>
+            <br/>
+            <br/>
+            <i>
+              <?php echo $json[$dt->format("Ymd")]['source'];?>
+            </i>
+          ]]>
+        </description>
         <pubDate><?php echo $dt->format("D, d M Y H:i:s O");?></pubDate>
       </item>
     <?php endforeach; ?>
