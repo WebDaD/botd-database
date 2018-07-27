@@ -9,21 +9,10 @@
 * config.json (use for generator)
 * share-buttons --> single page better share!
 
-## Blessings
-
-* https://christlicheperlen.wordpress.com/category/segenswunsche/
-* http://www.christliche-themen.de/?pg=10426
-* http://www.agnethler.de/sites/segensw.html
-* Selber schreiben
-* Mail Steffi
-* Mail Gerd
-* Mail Julia
-
 ## Images
 
-* blessings.json new field image
 * load images from pixabay, save under assets/images/blessings
-* generator: create final image:
+* generator: create final image: (1920x1080)
   * Top right small logo
   * bottom left: Segen des Tages vom DD.MM.YYYY
   * save as YYYYMMDD.jpg
@@ -46,7 +35,6 @@
 * impressum
 * datenschutz (NEU!)
 * 404 Page
-
 
 ## Additional Files
 
@@ -109,6 +97,13 @@
 * Medium
 * https://www.dreamgrow.com/top-15-most-popular-social-networking-sites/
 
+
+## Blessings
+
+* Selber schreiben
+* Mail Steffi
+* Mail Gerd
+* Mail Julia
 
 ## Additional Tools
 
