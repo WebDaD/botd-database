@@ -58,8 +58,8 @@ program
   .alias('c')
   .option('-b, --blessings [blessings]', 'The Blessings-File')
   .option('-y, --year [year]', 'For what year.', moment().format('YYYY'))
-  .action(function (args, options) {
-    database.createCalendar(options.year, options.blessings, function (error) {
+  .action(function (args) {
+    database.createCalendar(args.year, args.blessings, function (error) {
       if (error) {
         console.error(error)
       } else {
